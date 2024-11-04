@@ -1,3 +1,4 @@
+# note: this docker-compose.yml is not safe for production for now
 services:
   traefik:
     image: traefik:v3.2.0 # Asegúrate de usar la versión más reciente de Traefik
