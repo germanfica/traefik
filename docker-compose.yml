@@ -1,0 +1,23 @@
+services:
+  traefik:
+    image: traefik:v3.2.0 # Asegúrate de usar la versión más reciente de Traefik
+    container_name: traefik
+    # command:
+    #   - "--api.insecure=true" # Activar dashboard en desarrollo
+    #   - "--providers.docker=true"
+    #   - "--entrypoints.web.address=:80"
+    #   - "--entrypoints.websecure.address=:443"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # Dashboard de Traefik en http://localhost:8080
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./config/traefik.yaml:/etc/traefik/traefik.yaml:ro" # read only, container cannot make changes
+    networks:
+      - shared-net
+
+networks:
+  shared-net:
+    external: true

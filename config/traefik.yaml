@@ -1,0 +1,21 @@
+# traefik.yaml
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+log:
+  level: DEBUG # by default is set to ERROR
+
+api:
+  dashboard: true
+  insecure: true  # Activar dashboard en desarrollo
+
+providers:
+  docker:
+    exposedByDefault: false  # Exponer servicios de Docker
+
+entryPoints:
+  web:
+    address: ":80"  # Puerto para HTTP
+  websecure:
+    address: ":443"  # Puerto para HTTPS
