@@ -12,7 +12,8 @@ api:
 
 providers:
   docker:
-    exposedByDefault: false  # Exponer servicios de Docker
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false  # Exponer servicios de Docker (Default true)
 
 entryPoints:
   web:
